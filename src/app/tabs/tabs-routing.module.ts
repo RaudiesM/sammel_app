@@ -20,15 +20,24 @@ const routes: Routes = [
         loadChildren: () => import('../tab3/tab3.module').then(m => m.Tab3PageModule)
       },
       {
+        path: 'startpage',
+        loadChildren: () => import('../startpage/startpage.module').then( m => m.StartpagePageModule)
+      },
+      {
+        path: 'add-structure',
+        loadChildren: () => import('../add-structure/add-structure.module').then( m => m.AddStructurePageModule)
+      },
+      {
         path: '',
-        redirectTo: '/tabs/tab1',
+        redirectTo: '/tabs/startpage',
         pathMatch: 'full'
       }
+
     ]
   },
   {
     path: '',
-    redirectTo: '/tabs/tab1',
+    redirectTo: '/tabs/startpage',
     pathMatch: 'full'
   }
 ];
