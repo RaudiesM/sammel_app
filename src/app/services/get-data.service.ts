@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Filesystem, Directory } from '@capacitor/filesystem';
-import { Preferences } from '@capacitor/preferences';
-import { datastructure } from '../tab1/tab1.page';
+
+import { datastructure } from '../add-structure/add-structure.page';
 import { Storage } from '@ionic/storage-angular';
 
 

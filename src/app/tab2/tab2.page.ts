@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { GetDataService } from '../services/get-data.service';
-import { datastructure } from '../tab1/tab1.page';
+import { datastructure } from '../add-structure/add-structure.page';
 
 
 @Component({
