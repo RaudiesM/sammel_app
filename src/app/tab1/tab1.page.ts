@@ -21,10 +21,6 @@ export class Tab1Page {
   
   async ngOnInit() {
     this.newInputs.push({title: "", field: ""});
-    
-    var stuff;
-    stuff = await this.getData.loadSaved();
-    console.log(stuff);
   }
 
   saveInput(){

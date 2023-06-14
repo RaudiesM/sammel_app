@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Filesystem, Directory } from '@capacitor/filesystem';
 import { Preferences } from '@capacitor/preferences';
 import { datastructure } from '../tab1/tab1.page';
+import { Storage } from '@ionic/storage-angular';
 
 
 
@@ -14,35 +15,45 @@ export class GetDataService {
   // public ds_names: string[] = [];
   public savedData : datastructure[] = [];
   private DATA_STORAGE: string = 'mi';
-  constructor() { }
+  
+  constructor(private storage: Storage) {
+    console.log("Constructor GetDataService");
+    this.init(); 
+  }
 
-  // public async addInput(ds : datastructure){
-  //   this.ds_names = ds;
-  //   // console.log(name);
-  //   this.saveInput();
-  // }
+  async init() {
+    console.log("init GetDataService");
+    await this.storage.create(); // DATENBANK anlegen!?
+    }
 
   public async saveInput(ds : datastructure){
     this.savedData.push(ds);
-    
-    Preferences.set({
-      key: this.DATA_STORAGE,
-      value: JSON.stringify(this.savedData),
-    });
+    this.saveCollections();
   }
+
+  async saveCollections() {
+    await this.storage.set("mi", this.savedData);
+    console.log("saveCollections getDateService");
+    }
 
   public async clearAll(){
-    Preferences.clear();
+    //Preferences.clear();
+    console.log("not yet implemented, genius!")
   }
 
-  public async loadSaved() {
-    const { value } = await Preferences.get({ key: this.DATA_STORAGE });
-    let ds_output;
-    ds_output = (value ? JSON.parse(value) : []) as datastructure[];
-    this.savedData = ds_output;
-    return ds_output
-    // more to come...
-    // Preferences.clear();
+  async loadCollections() {
+    var data = await this.storage.get("mi");
+    if (data == null) {
+      console.log("Keine Sammlungen gespeichert!");
+      this.saveCollections();
+    } 
+    else{
+      this.savedData = data;
+      console.log(" Sammlungen geladen");
+      console.log(this.savedData);
+      this.saveCollections();
+    }
+    return data;
   }
 
 }
