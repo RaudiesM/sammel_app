@@ -12,8 +12,9 @@
       <ion-title size="large">Start DataStructure</ion-title>
     </ion-toolbar>
   </ion-header>
-  <ion-button (click)="saveInput()">Save</ion-button>
-  <ion-button (click)="clearInput()">Clear</ion-button>
+  <!-- <ion-button (click)="saveInput()">Save</ion-button> -->
+  <!-- <ion-button (click)="clearInput()">Clear</ion-button> -->
+
   <ion-row>
     <ion-col>
       <ion-input [(ngModel)]="newTitle" label="Title" label-placement="floating" fill="outline" placeholder="New Title"></ion-input>
@@ -56,4 +57,13 @@
       </ion-col>
     </ion-row>
   </ion-grid> -->
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+  
+    <ion-fab-button (click)="saveInput()">
+      <!-- <ion-tab-button tab="startpage"> -->
+        <ion-icon name="save-outline"></ion-icon>      
+      <!-- </ion-tab-button> -->
+    </ion-fab-button>
+  
+</ion-fab>
 </ion-content>

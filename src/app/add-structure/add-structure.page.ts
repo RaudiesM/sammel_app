@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { GetDataService } from '../services/get-data.service';
 import { AlertController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-structure',
@@ -10,7 +11,7 @@ import { AlertController } from '@ionic/angular';
 export class AddStructurePage {
   newTitle : string = "";
   newInputs : dataValue[] = [];
-  constructor(public getData : GetDataService, private alertController: AlertController) { }
+  constructor(public getData : GetDataService, private alertController: AlertController, public router : Router) { }
 
   async ngOnInit() {
     this.newInputs.push({title: "", field: ""});
@@ -40,6 +41,7 @@ export class AddStructurePage {
       // console.log(this.newInputs);
       this.emptyInputFields();
       this.presentAlert("New Structure created", "");
+      this.router.navigate(['/tabs/startpage']);
     }else{
       // alert("Please fill out every input field");
       this.presentAlert("Incomplete Form!", "Please fill out every input field before saving.");
