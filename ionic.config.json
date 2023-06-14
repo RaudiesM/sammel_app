@@ -1,0 +1,7 @@
+{
+  "name": "mi_datastructure",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

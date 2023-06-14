@@ -1,0 +1,47 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Daten anlegen
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-grid>
+    <ion-row>
+      <ion-list>
+        <ion-item>
+          <ion-select [(ngModel)]="currentStructure" interface="popover" required fill="outline" placeholder="Datenstruktur auswählen">
+            <ion-select-option *ngFor="let structures of listOfStructures, let i = index" value="{{i}}">{{structures.title}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+
+    </ion-row>
+
+    <div *ngIf="currentStructure != -1">
+      <ion-row *ngFor="let fields of listOfStructures[currentStructure].fields">
+        <ion-col *ngIf="fields.field == 'string'">
+          <ion-input label-placement="floating" fill="outline" label="{{fields.title}}">
+          </ion-input>        
+        </ion-col>
+
+        <ion-col *ngIf="fields.field == 'number'">
+          <ion-input type="number" label-placement="floating" fill="outline" label="{{fields.title}}">
+          </ion-input>        
+        </ion-col>
+
+        <ion-col *ngIf="fields.field == 'date'">
+          <ion-input type="date" label-placement="floating" fill="outline" label="{{fields.title}}">
+          </ion-input>        
+        </ion-col>
+
+        <ion-col *ngIf="fields.field == 'images'">
+          <ion-input type="file" label-placement="floating" fill="outline" label="{{fields.title}}">
+          </ion-input>        
+        </ion-col>
+
+      </ion-row>
+    </div>
+  </ion-grid>
+</ion-content>
