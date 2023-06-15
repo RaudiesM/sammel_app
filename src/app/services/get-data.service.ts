@@ -37,7 +37,8 @@ export class GetDataService {
 
   public async clearAll(){
     //Preferences.clear();
-    console.log("not yet implemented, genius!")
+    await this.storage.clear();
+    console.log("cleared")
   }
 
   async loadCollections() {

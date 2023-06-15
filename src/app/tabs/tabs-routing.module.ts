@@ -24,6 +24,14 @@ const routes: Routes = [
         loadChildren: () => import('../add-structure/add-structure.module').then( m => m.AddStructurePageModule)
       },
       {
+        path: 'single-sammlung',
+        loadChildren: () => import('../single-sammlung/single-sammlung.module').then( m => m.SingleSammlungPageModule)
+      },
+      {
+        path: 'additem',
+        loadChildren: () => import('../additem/additem.module').then( m => m.AdditemPageModule)
+      },
+      {
         path: '',
         redirectTo: '/tabs/startpage',
         pathMatch: 'full'
