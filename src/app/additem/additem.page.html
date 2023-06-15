@@ -10,16 +10,18 @@
   <ion-grid>
     <ion-row>
       <ion-list>
-        <ion-item>
-          <ion-select [(ngModel)]="currentStructure" interface="popover" required fill="outline" placeholder="Datenstruktur auswählen">
-            <ion-select-option *ngFor="let structures of listOfStructures, let i = index" value="{{i}}">{{structures.title}}</ion-select-option>
-          </ion-select>
+        <ion-item *ngIf="isLoaded == false">
+          Titel
+        </ion-item>
+        <ion-item *ngIf="isLoaded == true">
+          {{listOfStructures[getID()].title}}
+          
         </ion-item>
       </ion-list>
 
     </ion-row>
 
-    <div *ngIf="currentStructure != -1">
+    <div *ngIf="isLoaded == true">
       <ion-row *ngFor="let fields of listOfStructures[currentStructure].fields">
         <ion-col *ngIf="fields.field == 'string'">
           <ion-input label-placement="floating" fill="outline" label="{{fields.title}}">

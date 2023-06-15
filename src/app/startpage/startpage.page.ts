@@ -20,8 +20,10 @@ export class StartpagePage{
     }
 
   navigateTo(aim : number){
-    console.log(aim);
-    this.navigator.navigateTo('/tabs/single-sammlung')
+    this.navigator.setID(aim);
+    var numb = this.navigator.getID();
+    console.log(numb);
+    this.navigator.navigateTo('/tabs/single-sammlung');
   }
 
 }

@@ -94,3 +94,4 @@ export interface datastructure {
   date : Date,
   fields:dataValue[]
 }
+
