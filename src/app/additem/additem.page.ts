@@ -51,7 +51,8 @@ export class AdditemPage{
         i++;
         obj = Object.assign(obj, { [field.title]: this.content[i] });
       }
-      console.log(obj);
+      // console.log(obj);
       this.getData.saveItems(this.listOfStructures[this.getID()].title, obj)
+      this.content = [];
     }
   }

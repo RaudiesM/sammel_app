@@ -68,12 +68,12 @@ export class GetDataService {
   async loadItems(title : string) {
     var data = await this.storage.get(title);
     if (data == null) {
-      console.log("Keine Sammlungen gespeichert!");
+      console.log("Keine Items gespeichert!");
       this.saveCollectionItems(title);
     } 
     else{
       this.savedItems = data;
-      console.log(" Sammlungen geladen");
+      console.log(" Items geladen");
       console.log(this.savedItems);
       this.saveCollectionItems(title);
     }
