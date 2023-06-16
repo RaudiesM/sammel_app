@@ -13,6 +13,7 @@ import { Storage } from '@ionic/storage-angular';
 export class GetDataService {
   // public ds_names: string[] = [];
   public savedData : datastructure[] = [];
+  public savedItems : any[] = [];
   private DATA_STORAGE: string = 'mi';
   
   constructor(private storage: Storage) {
@@ -29,11 +30,19 @@ export class GetDataService {
     this.savedData.push(ds);
     this.saveCollections();
   }
+  public async saveItems(title : string, content : any){
+    this.savedItems.push(content);
+    this.saveCollectionItems(title);
+  }
 
   async saveCollections() {
     await this.storage.set("mi", this.savedData);
     console.log("saveCollections getDateService");
     }
+  async saveCollectionItems(title : string){
+    await this.storage.set(title, this.savedItems);
+    console.log("item saved");
+  }
 
   public async clearAll(){
     //Preferences.clear();
@@ -52,6 +61,21 @@ export class GetDataService {
       console.log(" Sammlungen geladen");
       console.log(this.savedData);
       this.saveCollections();
+    }
+    return data;
+  }
+
+  async loadItems(title : string) {
+    var data = await this.storage.get(title);
+    if (data == null) {
+      console.log("Keine Sammlungen gespeichert!");
+      this.saveCollectionItems(title);
+    } 
+    else{
+      this.savedItems = data;
+      console.log(" Sammlungen geladen");
+      console.log(this.savedItems);
+      this.saveCollectionItems(title);
     }
     return data;
   }

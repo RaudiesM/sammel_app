@@ -13,7 +13,7 @@ export class AdditemPage{
   listOfStructures : datastructure[] = [];
   currentStructure : number = this.navigator.getID();
   isLoaded : boolean = false;
-
+  content : any[] = [];
   constructor(public getData : GetDataService, public navigator : NavigationService) {}
   ngOnInit() {
     // Die Daten der Sammlungen laden
@@ -40,4 +40,18 @@ export class AdditemPage{
       this.currentStructure = this.navigator.getID();
       return this.currentStructure;
     }
-}
+
+    // obj: Record<string,any>[] = [{}];
+    rearangeData(){
+      var obj = {};
+      var i : number = -1;
+      console.log("MyContent: "+this.content)
+      for(let field of this.listOfStructures[this.getID()].fields){
+        // console.log("aufzählung: "+field.title);
+        i++;
+        obj = Object.assign(obj, { [field.title]: this.content[i] });
+      }
+      console.log(obj);
+      this.getData.saveItems(this.listOfStructures[this.getID()].title, obj)
+    }
+  }
