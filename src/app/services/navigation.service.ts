@@ -10,7 +10,14 @@ export class NavigationService {
   constructor(public router : Router) { }
 
   public navigateTo(path : string){
-    this.router.navigate([path]);
+    var goal : string = '';
+    if(path == "single-sammlung"){
+      goal = '/tabs/single-sammlung';
+    }else if(path == "startpage"){
+      goal = '/tabs/startpage';
+    }
+    goal = '/tabs/single-sammlung';
+    this.router.navigate([goal]);
   }
 
   public setID(id : number){

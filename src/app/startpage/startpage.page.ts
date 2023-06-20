@@ -21,9 +21,7 @@ export class StartpagePage{
 
   navigateTo(aim : number){
     this.navigator.setID(aim);
-    var numb = this.navigator.getID();
-    console.log(numb);
-    this.navigator.navigateTo('/tabs/single-sammlung');
+    this.navigator.navigateTo('single-sammlung');
   }
 
 }

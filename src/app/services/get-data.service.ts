@@ -24,6 +24,7 @@ export class GetDataService {
   async init() {
     console.log("init GetDataService");
     await this.storage.create(); // DATENBANK anlegen!?
+    // this.clearAll();
     }
 
   public async saveInput(ds : datastructure){
@@ -39,9 +40,12 @@ export class GetDataService {
     await this.storage.set("mi", this.savedData);
     console.log("saveCollections getDateService");
     }
+
   async saveCollectionItems(title : string){
     await this.storage.set(title, this.savedItems);
+    console.log("saved under "+title);
     console.log("item saved");
+    console.log(this.savedItems);
   }
 
   public async clearAll(){
@@ -69,12 +73,18 @@ export class GetDataService {
     var data = await this.storage.get(title);
     if (data == null) {
       console.log("Keine Items gespeichert!");
-      this.saveCollectionItems(title);
+      if(this.savedItems.length >0){
+        var newItems : any[] = [];
+        this.savedItems = newItems;
+        this.saveCollectionItems(title);
+      }
+      console.log(this.savedItems);
     } 
     else{
       this.savedItems = data;
       console.log(" Items geladen");
       console.log(this.savedItems);
+      console.log("loaded from "+title);
       this.saveCollectionItems(title);
     }
     return data;
