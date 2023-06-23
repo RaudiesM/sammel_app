@@ -19,7 +19,7 @@ export class AdditemPage{
     // Die Daten der Sammlungen laden
     this.loadCollections();
     this.currentStructure = this.navigator.getID();
-    console.log("currentStructure = "+this.currentStructure);
+    // console.log("currentStructure = "+this.currentStructure);
     }
 
    async loadCollections(): Promise<void> {

@@ -3,8 +3,6 @@ import { Injectable } from '@angular/core';
 import { datastructure } from '../add-structure/add-structure.page';
 import { Storage } from '@ionic/storage-angular';
 
-
-
 @Injectable({
   providedIn: 'root'
 })
