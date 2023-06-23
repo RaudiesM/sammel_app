@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title *ngIf="isLoaded == false" >Notfall</ion-title>
     <ion-title *ngIf="isLoaded == true" >{{currentCollection[getID()].title}}</ion-title>
+    <ion-title *ngIf="isLoaded == false" >Notfall</ion-title>
   </ion-toolbar>
 </ion-header>
 
