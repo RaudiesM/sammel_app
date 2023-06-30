@@ -24,6 +24,10 @@ const routes: Routes = [
         loadChildren: () => import('../additem/additem.module').then( m => m.AdditemPageModule)
       },
       {
+        path: 'item',
+        loadChildren: () => import('../item/item.module').then( m => m.ItemPageModule)
+      },
+      {
         path: '',
         redirectTo: '/tabs/startpage',
         pathMatch: 'full'
