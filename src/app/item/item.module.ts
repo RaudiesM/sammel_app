@@ -8,6 +8,9 @@ import { ItemPageRoutingModule } from './item-routing.module';
 
 import { ItemPage } from './item.page';
 
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'; /******* ergänzen ************/
+
+
 @NgModule({
   imports: [
     CommonModule,
@@ -15,6 +18,7 @@ import { ItemPage } from './item.page';
     IonicModule,
     ItemPageRoutingModule
   ],
-  declarations: [ItemPage]
+  declarations: [ItemPage],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class ItemPageModule {}
