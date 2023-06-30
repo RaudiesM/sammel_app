@@ -13,7 +13,7 @@ export class GetDataService {
   public savedData : datastructure[] = [];
   public savedItems : any[] = [];
   private DATA_STORAGE: string = 'mi';
-  
+
   constructor(private storage: Storage) {
     console.log("Constructor GetDataService");
     this.init(); 

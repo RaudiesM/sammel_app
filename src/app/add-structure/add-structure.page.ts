@@ -14,7 +14,8 @@ export class AddStructurePage {
   constructor(public getData : GetDataService, private alertController: AlertController, public router : Router) { }
 
   async ngOnInit() {
-    this.newInputs.push({title: "", field: ""});
+    this.newInputs.push({title: "Bezeichnung", field: "string"});
+    this.newInputs.push({title: "Bilder", field: "images"})
   }
 
   saveInput(){

@@ -16,7 +16,7 @@ export class NavigationService {
     }else if(path == "startpage"){
       goal = '/tabs/startpage';
     }
-    goal = '/tabs/single-sammlung';
+    // goal = '/tabs/single-sammlung';
     this.router.navigate([goal]);
   }
 

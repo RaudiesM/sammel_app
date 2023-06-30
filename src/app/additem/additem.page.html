@@ -23,6 +23,7 @@
 
     <div *ngIf="isLoaded == true">
       <ion-row *ngFor="let fields of listOfStructures[currentStructure].fields, let i = index">
+
         <ion-col *ngIf="fields.field == 'string'">
           <ion-input [(ngModel)]="content[i]" label-placement="floating" fill="outline" label="{{fields.title}}">
           </ion-input>        
@@ -37,12 +38,20 @@
           <ion-input [(ngModel)]="content[i]" type="date" label-placement="floating" fill="outline" label="{{fields.title}}">
           </ion-input>        
         </ion-col>
-
-        <ion-col *ngIf="fields.field == 'images'">
-          <ion-input [(ngModel)]="content[i]" type="file" label-placement="floating" fill="outline" label="{{fields.title}}">
-          </ion-input>        
+        
+        <ion-col *ngIf="fields.field == 'bool'">
+          <ion-checkbox [(ngModel)]="content[i]">{{fields.title}}</ion-checkbox>
         </ion-col>
-
+        
+        <ion-col *ngIf="fields.field == 'images'">
+          <!-- <ion-input [(ngModel)]="content[i]" type="file" label-placement="floating" fill="outline" label="{{fields.title}}">
+          </ion-input>   -->
+          <ion-button (click)="addPhotoToGallery(i)">
+            Add Images
+            <ion-icon slot="end" name="camera"></ion-icon>
+          </ion-button>      
+        </ion-col>
+      
       </ion-row>
     </div>
   </ion-grid>
