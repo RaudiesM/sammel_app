@@ -6,8 +6,12 @@
 
 <ion-content [fullscreen]="true">
   <swiper-container>
-    <swiper-slide color="red">Slide 1</swiper-slide>
-    <swiper-slide>Slide 2</swiper-slide>
-    <swiper-slide>Slide 3</swiper-slide>
+    <swiper-slide *ngFor="let item of savedItems">
+      <ion-row>
+        <ion-col size="12" *ngFor="let content of collection[this.currentID].fields, let i = index">
+          {{content.title}}: {{item[i]}}
+        </ion-col>
+      </ion-row>
+    </swiper-slide>
     </swiper-container>
 </ion-content>

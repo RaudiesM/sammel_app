@@ -14,7 +14,7 @@ export class PhotoService {
   constructor() {}
   public async getImage() {
     // Take a photo
-    console.log("photo");
+    // console.log("photo");
     const capturedPhoto = await Camera.getPhoto({
       resultType: CameraResultType.Uri,
       //   resultType: CameraResultType.DataUrl,
@@ -42,7 +42,7 @@ export class PhotoService {
     const photoList = await Preferences.get({ key: this.PHOTO_STORAGE });
     if(photoList.value == null){
       photoList.value = "";
-      console.log("value is null");
+      // console.log("value is null");
     }
     this.photos = JSON.parse(photoList.value) || [];
     

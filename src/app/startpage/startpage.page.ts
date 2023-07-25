@@ -15,7 +15,7 @@ export class StartpagePage{
 
 
   async init() {
-    console.log("load collections");
+    // console.log("load collections");
     this.collections = await this.getData.loadCollections(); // DATENBANK anlegen!?
     }
 

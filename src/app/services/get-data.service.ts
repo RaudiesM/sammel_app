@@ -15,12 +15,12 @@ export class GetDataService {
   private DATA_STORAGE: string = 'mi';
 
   constructor(private storage: Storage) {
-    console.log("Constructor GetDataService");
+    //console.log("Constructor GetDataService");
     this.init(); 
   }
 
   async init() {
-    console.log("init GetDataService");
+    //console.log("init GetDataService");
     await this.storage.create(); // DATENBANK anlegen!?
     // this.clearAll();
     }
@@ -31,37 +31,39 @@ export class GetDataService {
   }
   public async saveItems(title : string, content : any){
     this.savedItems.push(content);
+    // console.log("new Items");
+    // console.log(this.saveItems);
     this.saveCollectionItems(title);
   }
 
   async saveCollections() {
     await this.storage.set("mi", this.savedData);
-    console.log("saveCollections getDateService");
+    // console.log("saveCollections getDateService");
     }
 
   async saveCollectionItems(title : string){
     await this.storage.set(title, this.savedItems);
-    console.log("saved under "+title);
-    console.log("item saved");
-    console.log(this.savedItems);
+    // console.log("saved under "+title);
+    // console.log("item saved");
+    // console.log(this.savedItems);
   }
 
   public async clearAll(){
     //Preferences.clear();
     await this.storage.clear();
-    console.log("cleared")
+    // console.log("cleared")
   }
 
   async loadCollections() {
     var data = await this.storage.get("mi");
     if (data == null) {
-      console.log("Keine Sammlungen gespeichert!");
+      // console.log("Keine Sammlungen gespeichert!");
       this.saveCollections();
     } 
     else{
       this.savedData = data;
-      console.log(" Sammlungen geladen");
-      console.log(this.savedData);
+      // console.log(" Sammlungen geladen");
+      // console.log(this.savedData);
       this.saveCollections();
     }
     return data;
@@ -70,19 +72,19 @@ export class GetDataService {
   async loadItems(title : string) {
     var data = await this.storage.get(title);
     if (data == null) {
-      console.log("Keine Items gespeichert!");
+      // console.log("Keine Items gespeichert!");
       if(this.savedItems.length >0){
         var newItems : any[] = [];
         this.savedItems = newItems;
         this.saveCollectionItems(title);
       }
-      console.log(this.savedItems);
+      // console.log(this.savedItems);
     } 
     else{
       this.savedItems = data;
-      console.log(" Items geladen");
-      console.log(this.savedItems);
-      console.log("loaded from "+title);
+      // console.log(" Items geladen");
+      // console.log(this.savedItems);
+      // console.log("loaded from "+title);
       this.saveCollectionItems(title);
     }
     return data;

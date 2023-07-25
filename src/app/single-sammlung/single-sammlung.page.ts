@@ -16,7 +16,7 @@ export class SingleSammlungPage{
   currentCollection : datastructure[] = [];
   currTitle = "Titel";
   isLoaded : boolean = false;
-  myItems : any;
+  myItems : any[] = [];
   myImages : UserPhoto[] = []
   constructor(public navigator : NavigationService, public getData : GetDataService) { 
     this.init(); 
@@ -25,7 +25,7 @@ export class SingleSammlungPage{
   async init() {
     // console.log(this.currentID);
     this.currentID = this.navigator.getID();
-    console.log(this.currentID);
+    // console.log(this.currentID);
     if(this.currentID == undefined || this.currentID <0){
       this.navigator.navigateTo("startpage");
     }
@@ -35,9 +35,9 @@ export class SingleSammlungPage{
       var newItems : any = {};
       this.myItems = newItems;
     }
-    console.log("______________________________________________________________________");
-    console.log(this.myItems);
-    console.log("______________________________________________________________________");
+    // console.log("______________________________________________________________________");
+    // console.log(this.myItems);
+    // console.log("______________________________________________________________________");
     
       this.isLoaded = true;
       this.getImagesFromStructure();
@@ -46,7 +46,7 @@ export class SingleSammlungPage{
     async getImagesFromStructure(){
       this.myImages = [];
       for(let items of this.myItems){
-        this.myImages.push(items.Bilder[0])
+        this.myImages.push(items[1][0])
       }
       for (let photo of this.myImages) {
         // Read each saved photo's data from the Filesystem
@@ -61,7 +61,7 @@ export class SingleSammlungPage{
     }
 
     ionViewWillEnter(){
-      console.log("updating");
+      // console.log("updating");
       this.init(); 
     }
 

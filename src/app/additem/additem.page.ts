@@ -32,12 +32,12 @@ export class AdditemPage{
     }
 
     async addPhotoToGallery(i : number){
-      console.log(i);
+      // console.log(i);
       const savedImageFile = await this.photoService.getImage();
       if(typeof savedImageFile.webviewPath === "string"){
         this.photos.unshift(savedImageFile);
       }
-      console.log(this.photos);
+      // console.log(this.photos);
       this.content[i] = this.photos;
       
     }
@@ -54,7 +54,7 @@ export class AdditemPage{
 
    onCollectionsLoaded(): void {
     this.isLoaded = true;
-    console.log('Daten über die Sammlungen wurden geladen');
+    //console.log('Daten über die Sammlungen wurden geladen');
     }
     getID(){
       this.currentStructure = this.navigator.getID();
@@ -63,17 +63,9 @@ export class AdditemPage{
 
     // obj: Record<string,any>[] = [{}];
     rearangeData(){
-      var obj = {};
-      var i : number = -1;
-      console.log("MyContent: "+this.content)
-      for(let field of this.listOfStructures[this.getID()].fields){
-        // console.log("aufzählung: "+field.title);
-        i++;
-        obj = Object.assign(obj, { [field.title]: this.content[i]});
-      }
       // console.log(obj);
-
-      this.getData.saveItems(this.listOfStructures[this.getID()].title, obj)
+      
+      this.getData.saveItems(this.listOfStructures[this.getID()].title, this.content)
       this.content = [];
       this.photos = [];
     }

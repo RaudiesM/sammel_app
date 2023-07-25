@@ -18,6 +18,12 @@ export class AddStructurePage {
     this.newInputs.push({title: "Bilder", field: "images"})
   }
 
+  ionViewWillEnter(){
+    // console.log("updating");
+    this.newInputs = [];
+    this.ngOnInit(); 
+  }
+
   saveInput(){
     var readyToSave : boolean = true;
     for(let inputs of this.newInputs){
@@ -38,7 +44,7 @@ export class AddStructurePage {
       };
       // this.newDataStruct.push(inputDataStruct);
       this.getData.saveInput(inputDataStruct);
-      console.log(inputDataStruct);
+      //console.log(inputDataStruct);
       // console.log(this.newInputs);
       this.emptyInputFields();
       this.presentAlert("New Structure created", "");
@@ -72,7 +78,7 @@ export class AddStructurePage {
   decreaseInputs(i:number){
     // delete this.newInputs[i];
     this.newInputs.splice(i, 1);
-    console.log(i);
+    //console.log(i);
   }
 
   async presentAlert(alertHeader : string, alertText : string) {
