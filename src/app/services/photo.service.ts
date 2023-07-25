@@ -12,6 +12,7 @@ export class PhotoService {
   private PHOTO_STORAGE: string = 'photos';
 
   constructor() {}
+
   public async getImage() {
     // Take a photo
     // console.log("photo");
@@ -58,6 +59,18 @@ export class PhotoService {
         photo.webviewPath = `data:image/jpeg;base64,${readFile.data}`;
     }
   }
+
+  public async readImagesFromFilesystem(photo: UserPhoto){
+    // Read saved photo's data from the Filesystem
+    const readFile = await Filesystem.readFile({
+      path: photo.filepath,
+      directory: Directory.Data,
+      });
+      // Web platform only: Load the photo as base64 data
+      photo.webviewPath = `data:image/jpeg;base64,${readFile.data}`;
+    return photo;
+  }
+
 
   private async savePicture(photo: Photo) { 
     // Convert photo to base64 format, required by Filesystem API to save
