@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { SingleSammlungPageRoutingModule } from './single-sammlung-routing.module';
 
 import { SingleSammlungPage } from './single-sammlung.page';
+import { ComponentModule } from '../components/component/component.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    SingleSammlungPageRoutingModule
+    SingleSammlungPageRoutingModule,
+    ComponentModule
   ],
   declarations: [SingleSammlungPage]
 })

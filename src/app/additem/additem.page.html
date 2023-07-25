@@ -1,41 +1,31 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Daten anlegen
+    <ion-title class="ion-float-left">
+      Daten anlegen: {{listOfStructures[getID()].title}}
+    </ion-title>
+    <ion-title class="ion-float-right">
+      <app-logo></app-logo>
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-grid>
-    <ion-row>
-      <ion-list>
-        <ion-item *ngIf="isLoaded == false">
-          Titel
-        </ion-item>
-        <ion-item *ngIf="isLoaded == true">
-          {{listOfStructures[getID()].title}}
-          
-        </ion-item>
-      </ion-list>
-
-    </ion-row>
-
-    <div *ngIf="isLoaded == true">
+      <div *ngIf="isLoaded == true">
       <ion-row *ngFor="let fields of listOfStructures[currentStructure].fields, let i = index">
 
         <ion-col *ngIf="fields.field == 'string'">
-          <ion-input [(ngModel)]="content[i]" label-placement="floating" fill="outline" label="{{fields.title}}">
+          <ion-input [(ngModel)]="content[i]" fill="outline" placeholder="{{fields.title}}">
           </ion-input>        
         </ion-col>
 
         <ion-col *ngIf="fields.field == 'number'">
-          <ion-input [(ngModel)]="content[i]" type="number" label-placement="floating" fill="outline" label="{{fields.title}}">
+          <ion-input [(ngModel)]="content[i]" type="number" fill="outline" placeholder="{{fields.title}}">
           </ion-input>        
         </ion-col>
 
         <ion-col *ngIf="fields.field == 'date'">
-          <ion-input [(ngModel)]="content[i]" type="date" label-placement="floating" fill="outline" label="{{fields.title}}">
+          <ion-input [(ngModel)]="content[i]" type="date" fill="outline" placeholder="{{fields.title}}">
           </ion-input>        
         </ion-col>
         
@@ -55,13 +45,14 @@
       </ion-row>
     </div>
   </ion-grid>
-  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
-  
-    <ion-fab-button (click)="rearangeData()">
-      <!-- <ion-tab-button tab="startpage"> -->
-        <ion-icon name="save-outline"></ion-icon>      
-      <!-- </ion-tab-button> -->
-    </ion-fab-button>
-  
-</ion-fab>
+
 </ion-content>
+<ion-fab slot="fixed" vertical="bottom" horizontal="end">
+  
+  <ion-fab-button (click)="rearangeData()">
+    <!-- <ion-tab-button tab="startpage"> -->
+      <ion-icon name="save-outline"></ion-icon>      
+    <!-- </ion-tab-button> -->
+  </ion-fab-button>
+
+</ion-fab>

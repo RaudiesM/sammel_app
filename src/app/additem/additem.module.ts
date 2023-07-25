@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { AdditemPageRoutingModule } from './additem-routing.module';
 
 import { AdditemPage } from './additem.page';
+import { ComponentModule } from '../components/component/component.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    AdditemPageRoutingModule
+    AdditemPageRoutingModule,
+    ComponentModule
   ],
   declarations: [AdditemPage]
 })

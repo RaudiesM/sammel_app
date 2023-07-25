@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { AddStructurePageRoutingModule } from './add-structure-routing.module';
 
 import { AddStructurePage } from './add-structure.page';
+import { ComponentModule } from '../components/component/component.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    AddStructurePageRoutingModule
+    AddStructurePageRoutingModule,
+    ComponentModule
   ],
   declarations: [AddStructurePage]
 })

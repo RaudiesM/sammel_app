@@ -9,6 +9,7 @@ import { ItemPageRoutingModule } from './item-routing.module';
 import { ItemPage } from './item.page';
 
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'; /******* ergänzen ************/
+import { ComponentModule } from '../components/component/component.module';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'; /******* ergänzen *****
     CommonModule,
     FormsModule,
     IonicModule,
-    ItemPageRoutingModule
+    ItemPageRoutingModule,
+    ComponentModule
   ],
   declarations: [ItemPage],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

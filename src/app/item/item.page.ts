@@ -24,7 +24,7 @@ export class ItemPage implements OnInit {
       var i  =-1;
       for(let coll of this.collection[this.currentID].fields){
         i++;
-        console.log(coll.title + ": " + item[i])
+        //console.log(coll.title + ": " + item[i])
       }
 
     }
