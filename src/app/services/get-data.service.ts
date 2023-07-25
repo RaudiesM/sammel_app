@@ -22,7 +22,7 @@ export class GetDataService {
   async init() {
     //console.log("init GetDataService");
     await this.storage.create(); // DATENBANK anlegen!?
-    //this.clearAll();
+    // this.clearAll();
     }
 
   public async saveInput(ds : datastructure){

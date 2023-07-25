@@ -25,6 +25,7 @@ export class AddStructurePage {
   }
 
   saveInput(){
+    
     var readyToSave : boolean = true;
     for(let inputs of this.newInputs){
       if(inputs.title == "" || inputs.field == "" || this.newTitle == ""){
@@ -34,6 +35,8 @@ export class AddStructurePage {
       }
     }
     if(readyToSave){
+      this.newInputs.splice(1, 1);
+      this.newInputs.push({title: "Bilder", field: "images"});
       var inputDataStruct : datastructure;
       var newID = this.getData.savedData.length;
       inputDataStruct = {

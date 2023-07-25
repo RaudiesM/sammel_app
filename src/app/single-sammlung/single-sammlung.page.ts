@@ -18,6 +18,7 @@ export class SingleSammlungPage{
   isLoaded : boolean = false;
   myItems : any[] = [];
   myImages : UserPhoto[] = []
+  
   constructor(public navigator : NavigationService, public getData : GetDataService, public photoService : PhotoService) { 
     this.init(); 
    }
@@ -48,7 +49,6 @@ export class SingleSammlungPage{
       for(let items of this.myItems){
         this.myImages.push(items[1][0])
       }
-      // console.log(this.myImages);
       for (let photo of this.myImages) {
         photo = await this.photoService.readImagesFromFilesystem(photo);
       }
@@ -62,5 +62,9 @@ export class SingleSammlungPage{
     getID(){
       this.currentID = this.navigator.getID();
       return this.currentID;
+    }
+    setItemID(id: number){
+      this.navigator.setItemID(id);
+      console.log("ID set to "+id);
     }
 }

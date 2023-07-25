@@ -12,7 +12,7 @@
   <ion-grid>
     <ion-row>
       <ion-col size="5" *ngFor="let photo of myImages; index as position">
-        <ion-tab-button tab="item">
+        <ion-tab-button tab="item" (click)="setItemID(position)">
           <ion-thumbnail>
             <img alt="Silhouette of mountains" [src]="photo.webviewPath" />
           </ion-thumbnail>

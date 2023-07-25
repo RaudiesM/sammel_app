@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title class="ion-float-left">
-      item
+      {{this.collection[this.currentID].title}}
     </ion-title>
     <ion-title class="ion-float-right">
       <app-logo></app-logo>
@@ -10,8 +10,8 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <swiper-container>
-    <swiper-slide *ngFor="let item of savedItems">
+  <swiper-container [loop]="true">
+    <swiper-slide *ngFor="let item of orderedItems">
       <ion-row>
         <ion-col size="12" *ngFor="let content of collection[this.currentID].fields, let i = index">
           {{content.title}}: {{item[i]}}

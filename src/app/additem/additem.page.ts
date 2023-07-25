@@ -37,6 +37,7 @@ export class AdditemPage{
       }
       // console.log(this.photos);
       this.content[i] = this.photos;
+      // console.log(this.content[i]);
     }
    
     async loadCollections(){

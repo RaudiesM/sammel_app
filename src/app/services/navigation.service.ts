@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 export class NavigationService {
 
   private collectionID :number = -1;
+  private itemID : number = -1;
   constructor(public router : Router) { }
 
   public navigateTo(path : string){
@@ -25,6 +26,12 @@ export class NavigationService {
   }
   public getID(){
     return this.collectionID;
+  }
+  public setItemID(id : number){
+    this.itemID = id;
+  }
+  public getItemID(){
+    return this.itemID;
   }
 
 }
