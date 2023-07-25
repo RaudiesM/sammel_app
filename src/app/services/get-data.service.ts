@@ -22,7 +22,7 @@ export class GetDataService {
   async init() {
     //console.log("init GetDataService");
     await this.storage.create(); // DATENBANK anlegen!?
-    // this.clearAll();
+    //this.clearAll();
     }
 
   public async saveInput(ds : datastructure){
@@ -31,27 +31,19 @@ export class GetDataService {
   }
   public async saveItems(title : string, content : any){
     this.savedItems.push(content);
-    // console.log("new Items");
-    // console.log(this.saveItems);
     this.saveCollectionItems(title);
   }
 
   async saveCollections() {
     await this.storage.set("mi", this.savedData);
-    // console.log("saveCollections getDateService");
     }
 
   async saveCollectionItems(title : string){
     await this.storage.set(title, this.savedItems);
-    // console.log("saved under "+title);
-    // console.log("item saved");
-    // console.log(this.savedItems);
   }
 
   public async clearAll(){
-    //Preferences.clear();
     await this.storage.clear();
-    // console.log("cleared")
   }
 
   async loadCollections() {
@@ -88,6 +80,14 @@ export class GetDataService {
       this.saveCollectionItems(title);
     }
     return data;
+  }
+  async countItems(title: string){
+    var newCollection : any[] = await this.loadItems(title);
+    return newCollection.length;
+  }
+
+  async loadImages(){
+
   }
 
 }

@@ -57,7 +57,7 @@ export class SingleSammlungPage{
 
         // Web platform only: Load the photo as base64 data
         photo.webviewPath = `data:image/jpeg;base64,${readFile.data}`;
-    }
+      }
     }
 
     ionViewWillEnter(){

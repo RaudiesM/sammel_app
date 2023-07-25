@@ -27,35 +27,31 @@ export class AdditemPage{
     if(this.currentStructure <0 || this.currentStructure == undefined){
       this.navigator.navigateTo("startpage");
     }
-    // console.log("currentStructure = "+this.currentStructure);
     this.photos = [];
     }
 
     async addPhotoToGallery(i : number){
-      // console.log(i);
       const savedImageFile = await this.photoService.getImage();
       if(typeof savedImageFile.webviewPath === "string"){
         this.photos.unshift(savedImageFile);
       }
       // console.log(this.photos);
       this.content[i] = this.photos;
-      
     }
    
-    async loadCollections(): Promise<void> {
-    try {
-    this.listOfStructures = await this.getData.loadCollections();
-    // Notify the calling object that the operation is complete
-    this.onCollectionsLoaded();
-    } catch (error) {
-    console.error(error);
-    }
+    async loadCollections(){
+      try {
+        this.listOfStructures = await this.getData.loadCollections();
+        this.onCollectionsLoaded();
+      } catch (error) {
+        console.error(error);
+      }
    }
 
-   onCollectionsLoaded(): void {
-    this.isLoaded = true;
-    //console.log('Daten über die Sammlungen wurden geladen');
+    onCollectionsLoaded(){
+      this.isLoaded = true;
     }
+    
     getID(){
       this.currentStructure = this.navigator.getID();
       return this.currentStructure;
@@ -63,8 +59,6 @@ export class AdditemPage{
 
     // obj: Record<string,any>[] = [{}];
     rearangeData(){
-      // console.log(obj);
-      
       this.getData.saveItems(this.listOfStructures[this.getID()].title, this.content)
       this.content = [];
       this.photos = [];

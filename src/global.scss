@@ -24,3 +24,29 @@
 @import "@ionic/angular/css/text-alignment.css";
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
+
+ion-fab-button, ion-button{
+    // --color: #3B7A7B;
+    --background: #217074;
+}
+ion-toolbar{
+    --background: #217074;
+}
+ion-title{
+    color: #E7EAEF;
+}
+ion-card{
+    --background: #E7EAEF;
+}
+ion-input{
+    --background: white !important;
+}
+
+ion-select{
+    --background: white;
+}
+
+
+ion-content{
+    --background: #EDC5AB;
+}

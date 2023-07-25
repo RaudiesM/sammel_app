@@ -1,8 +1,16 @@
-<ion-header [translucent]="true">
+<ion-header [translucent]="true"> 
   <ion-toolbar>
-    <ion-title>
-      Neue Sammlung hinzufügen
+    
+    <ion-title class="ion-float-left ion-justify-items-center">
+      <ion-icon name="chevron-back-outline"></ion-icon>
+      Add new Collection
     </ion-title>
+    <ion-title class="ion-float-right"><svg  xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="white" class="bi bi-journal-album" viewBox="0 0 16 16">
+      <path d="M5.5 4a.5.5 0 0 0-.5.5v5a.5.5 0 0 0 .5.5h5a.5.5 0 0 0 .5-.5v-5a.5.5 0 0 0-.5-.5h-5zm1 7a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1h-3z"/>
+      <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z"/>
+      <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z"/>
+    </svg> </ion-title>
+    
   </ion-toolbar>
 </ion-header>
 
@@ -22,12 +30,10 @@
   </ion-row>
   <ion-row *ngFor="let input of newInputs, let i = index" class="ion-align-items-center">
     <ion-col>
-        <ion-input *ngIf="i<=1" [(ngModel)]="input.title" label="category" required label-placement="floating" fill="outline" [readonly]="true"></ion-input>
-        <ion-input *ngIf="i>1" [(ngModel)]="input.title" label="category" required label-placement="floating" fill="outline" placeholder="Category Name"></ion-input>
+        <ion-input *ngIf="i<=1" [(ngModel)]="input.title" fill="outline" [readonly]="true" placeholder="Bezeichnung"></ion-input>
+        <ion-input *ngIf="i>1" [(ngModel)]="input.title" fill="outline" placeholder="Category Name"></ion-input>
     </ion-col>
-    <ion-col>   
-        <ion-list>
-          <ion-item>
+    <ion-col>
             <ion-select *ngIf="i>1" [(ngModel)]="input.field" interface="popover" required fill="outline" placeholder="Category Type">
               <ion-select-option value="string">Text</ion-select-option>
               <ion-select-option value="number">Number</ion-select-option>
@@ -36,13 +42,10 @@
               <ion-select-option value="time">Time</ion-select-option>
             </ion-select>
 
-            <div *ngIf="i<=1">
-              <ion-text *ngIf="input.field == 'string'">Text</ion-text>
-              <ion-text *ngIf="input.field == 'images'">Images</ion-text>
+            <div *ngIf="i<=1" class="inputText">
+              <ion-input *ngIf="input.field == 'string'" fill="outline" [readonly]="true" placeholder="Text"></ion-input>
+              <ion-input *ngIf="input.field == 'images'" fill="outline" [readonly]="true" placeholder="Images"></ion-input>
             </div>
-            
-          </ion-item>
-        </ion-list>
     </ion-col>
     <ion-col size="auto">
       <ion-button *ngIf="i > 1" (click)="decreaseInputs(i)">

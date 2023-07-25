@@ -27,7 +27,7 @@ export class AddStructurePage {
   saveInput(){
     var readyToSave : boolean = true;
     for(let inputs of this.newInputs){
-      if(inputs.title == "" || inputs.field == ""){
+      if(inputs.title == "" || inputs.field == "" || this.newTitle == ""){
         console.log("no save");
         readyToSave = false;
         break;
@@ -42,10 +42,9 @@ export class AddStructurePage {
         date : new Date(),
         fields : this.newInputs
       };
-      // this.newDataStruct.push(inputDataStruct);
       this.getData.saveInput(inputDataStruct);
       //console.log(inputDataStruct);
-      // console.log(this.newInputs);
+      //console.log(this.newInputs);
       this.emptyInputFields();
       this.presentAlert("New Structure created", "");
       this.router.navigate(['/tabs/startpage']);
@@ -53,12 +52,6 @@ export class AddStructurePage {
       // alert("Please fill out every input field");
       this.presentAlert("Incomplete Form!", "Please fill out every input field before saving.");
     }
-  }
-
-  
-
-  clearInput(){
-    this.getData.clearAll();
   }
 
   emptyInputFields(){
