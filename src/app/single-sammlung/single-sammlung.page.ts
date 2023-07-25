@@ -46,7 +46,12 @@ export class SingleSammlungPage{
     
     async getImagesFromStructure(){
       this.myImages = [];
+      console.log("myItems:");
+      // console.log(this.myItems);
       for(let items of this.myItems){
+        for(let item of items[1]){
+          console.log(item);
+        }
         this.myImages.push(items[1][0])
       }
       for (let photo of this.myImages) {
