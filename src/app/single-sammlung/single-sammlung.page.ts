@@ -50,13 +50,14 @@ export class SingleSammlungPage{
       // console.log(this.myItems);
       for(let items of this.myItems){
         for(let item of items[1]){
-          console.log(item);
+          // console.log(item);
         }
-        this.myImages.push(items[1][0])
+        this.myImages.push(items[items.length-1][0])
       }
       for (let photo of this.myImages) {
         photo = await this.photoService.readImagesFromFilesystem(photo);
       }
+      console.log(this.myImages);
     }
 
     ionViewWillEnter(){

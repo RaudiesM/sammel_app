@@ -49,7 +49,7 @@ export class ItemPage implements OnInit {
     }
     this.orderedItems = newItems;
     for(let item of this.orderedItems){
-      item[1][0] = await this.photoService.readImagesFromFilesystem(item[1][0]);
+      item[item.length-1][0] = await this.photoService.readImagesFromFilesystem(item[item.length-1][0]);
       }
     
     // console.log(this.orderedItems);
@@ -58,8 +58,8 @@ export class ItemPage implements OnInit {
   ionViewWillEnter(){
     // console.log("updating");
     this.ngOnInit(); 
-    // for(let content of this.collection[this.currentID].fields){
-    //   console.log(content);
-    // }
+    for(let content of this.collection[this.currentID].fields){
+      console.log(content);
+    }
   }
 }

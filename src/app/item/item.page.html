@@ -14,13 +14,23 @@
     <swiper-slide *ngFor="let item of orderedItems">
       <ion-row>
         <ion-img
-  [src]="item[1][0].webviewPath"
+  [src]="item[item.length-1][0].webviewPath"
   alt="Here should be an image"
 ></ion-img>
       </ion-row>
       <ion-row *ngFor="let content of collection[this.currentID].fields, let i = index">
-        <ion-col size="12">
-          {{content.title}}: {{item[i]}}
+        <ion-col size="12" *ngIf="content.title=='Bezeichnung'">
+          <ion-text><h1>{{item[i]}}</h1></ion-text>
+        </ion-col>
+        <ion-col size="6" *ngIf="content.title!='Bezeichnung' && content.field=='string' || content.field=='bool' ||content.field=='date' ||content.field=='number'">
+          {{content.title}}
+        </ion-col>
+        <ion-col size="6" *ngIf="content.title!='Bezeichnung' && content.field=='string' || content.field=='date' ||content.field=='number'">
+          {{item[i]}}
+        </ion-col>
+        <ion-col size="6" *ngIf="content.field=='bool'">
+          <!-- {{item[i]}} -->
+          <ion-checkbox [(ngModel)]="item[i]" [readonly]="true"></ion-checkbox>
         </ion-col>
       </ion-row>
     </swiper-slide>
